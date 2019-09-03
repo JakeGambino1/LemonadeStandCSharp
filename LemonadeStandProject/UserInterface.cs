@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class UserInterface
+    public static class UserInterface
     {
         // member variables
 
         // constructor
 
         // member methods
-        public void InitializeInterface(Player player)
+        public static void InitializeInterface(Player player)
         {
             DisplayMoney(player);
             DisplayInventory(player);
@@ -21,32 +21,31 @@ namespace LemonadeStandProject
             DisplayRemainingDays();
             DisplayCurrentWeather();
             DisplayForecast();
-            Console.ReadLine();
         }
-        public void DisplayMoney(Player player)
+        public static void DisplayMoney(Player player)
         {
             Console.WriteLine(player.name + " has $" + player.money + " remaining");
         }
-        public void DisplayInventory(Player player)
+        public static void DisplayInventory(Player player)
         {
             Console.WriteLine("Their remaining inventory:\n" + 
-                player.playerInventory.lemons + " lemons\n" + 
-                player.playerInventory.ice + " ice\n" + 
-                player.playerInventory.sugar + " sugar\n");
+                player.playerOneInventory.lemons + " lemons\n" + 
+                player.playerOneInventory.ice + " ice\n" + 
+                player.playerOneInventory.sugar + " sugar\n");
         }
-        public void DisplayCurrentDay()
+        public static void DisplayCurrentDay()
         {
 
         }
-        public void DisplayRemainingDays()
+        public static void DisplayRemainingDays()
         {
 
         }
-        public void DisplayCurrentWeather()
+        public static void DisplayCurrentWeather()
         {
 
         }
-        public void DisplayForecast()
+        public static void DisplayForecast()
         {
 
         }

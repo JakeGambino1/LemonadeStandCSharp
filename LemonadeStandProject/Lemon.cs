@@ -13,6 +13,5 @@ namespace LemonadeStandProject
             name = "lemon";
             price = 0.75;
         }
-
     }
 }

@@ -8,9 +8,9 @@ namespace LemonadeStandProject
     public class Game
     {
         // member variables // has a
-        public Player player = new Player();
-        public UserInterface gameState = new UserInterface();
-        public IngredientsForPurchase gameShop = new IngredientsForPurchase();
+        public static Player player = new Player();
+        //public IngredientsForPurchase gameShop = new IngredientsForPurchase();
+        public SupplyShop gameShop = new SupplyShop();
         public int gameLength;
 
         // constructor
@@ -23,7 +23,7 @@ namespace LemonadeStandProject
         public void BeginGame()
         {
             GameDuration();
-            gameState.InitializeInterface(player);
+            UserInterface.InitializeInterface(player);
             GameLoop();
         }
         public void GameDuration()
@@ -33,7 +33,7 @@ namespace LemonadeStandProject
         }
         public void GameLoop()
         {
-            gameShop.BuyXUnits();
+            gameShop.InitializeShop(player);
         }
     }
 }

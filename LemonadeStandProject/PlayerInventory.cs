@@ -8,10 +8,11 @@ namespace LemonadeStandProject
 {
     public class PlayerInventory
     {
-        // member variables // has a
+        // member variables
         public int lemons;
         public int ice;
         public int sugar;
+        public double increaseInInventory;
 
         // constructor
         public PlayerInventory()
@@ -21,10 +22,12 @@ namespace LemonadeStandProject
             sugar = 0;
         }
 
-        // member methods // can do
-        public int AdjustInventory()
+        // member methods
+        public void IncreaseInventory(int amountOfIngredient, Player player)
         {
-            return lemons -= 1;
+            lemons += amountOfIngredient;
+            UserInterface.InitializeInterface(player);
+            Console.ReadLine();
         }
     }
 }

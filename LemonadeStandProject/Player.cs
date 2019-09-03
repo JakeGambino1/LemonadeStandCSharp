@@ -11,7 +11,7 @@ namespace LemonadeStandProject
         // member variables // has a
         public string name;
         public double money;
-        public PlayerInventory playerInventory = new PlayerInventory();
+        public PlayerInventory playerOneInventory = new PlayerInventory();
 
         // constructor
         public Player()

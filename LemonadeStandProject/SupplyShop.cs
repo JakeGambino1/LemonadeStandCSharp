@@ -9,45 +9,43 @@ namespace LemonadeStandProject
     public class SupplyShop
     {
         // member variables
-        public double pricePerLemon;
-        public double pricePerTwentyFiveIceCubes;
-        public double pricePerSugarCup;
-        public string supplyPurchase;
+        public static IngredientsForPurchase ingredientSelected;
+
 
         // constructor
         public SupplyShop()
         {
-            pricePerLemon = 0.75;
-            pricePerTwentyFiveIceCubes = .50;
-            pricePerSugarCup = .30;
         }
 
         // member methods
-        public void IniitializeShop()
+        public void InitializeShop(Player player)
         {
-            
+            WhatToBuy();
+            int amountOfIngredient = ingredientSelected.BuyXUnits(ingredientSelected);
+            ingredientSelected.CalculateTotalCost(ingredientSelected);
+            player.playerOneInventory.IncreaseInventory(amountOfIngredient, player);
         }
-        public string WhatToBuy(string supplyPurchase)
+        public static IngredientsForPurchase WhatToBuy()
         {
-            Console.WriteLine("What product would you like to buy?");
-            supplyPurchase = Console.ReadLine();
+            Console.WriteLine("What product would you like to buy? lemon (l), ice cubes (i), or sugar cups (s)");
+            string supplyPurchase = Console.ReadLine();
             switch (supplyPurchase)
             {
                 case "lemon":
                 case "l":
-                    Console.WriteLine("purchasing " + supplyPurchase);
-                    return supplyPurchase = "lemon";
+                    Console.WriteLine("purchasing lemons");
+                    return ingredientSelected = new Lemon();
                 case "ice":
                 case "i":
-                    Console.WriteLine("purchasing " + supplyPurchase);
-                    return supplyPurchase = "ice";
+                    Console.WriteLine("purchasing ice cubes");
+                    return ingredientSelected = new IceCubes();
                 case "sugar":
                 case "s":
-                    Console.WriteLine("purchasing " + supplyPurchase);
-                    return supplyPurchase = "sugar";
+                    Console.WriteLine("purchasing sugar");
+                    return ingredientSelected = new Sugar();
                 default:
                     Console.WriteLine("please make a valid selection - lemon (l), ice (i), or sugar (s)");
-                    return WhatToBuy(supplyPurchase);
+                    return WhatToBuy();
             }
         }
     }
