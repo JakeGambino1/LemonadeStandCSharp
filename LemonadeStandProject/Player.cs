@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Player
+    public class Player
     {
         // member variables // has a
         public string name;
@@ -16,20 +16,17 @@ namespace LemonadeStandProject
         // constructor
         public Player()
         {
-            name = "Player One";
+            Console.WriteLine("what would you like the player name to be?");
+            name = Console.ReadLine();
             money = 20.00;
         }
 
         // member methods // can do
         public bool CanBuy()
         {
-            if (money >= PurchaseProduct())
+            if (1 > 0)
             {
                 return true;
-            }
-            else
-            {
-                return false;
             }
         }
     }

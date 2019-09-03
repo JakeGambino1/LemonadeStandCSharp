@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Program
+    public class IceCubes : IngredientsForPurchase
     {
-        static void Main(string[] args)
+        public IceCubes()
         {
-            Game beginGame = new Game();
-            beginGame.BeginGame();
+            name = "ice cubes";
+            price = 0.50;
         }
     }
 }

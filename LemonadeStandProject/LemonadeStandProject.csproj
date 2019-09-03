@@ -45,10 +45,15 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="IceCubes.cs" />
+    <Compile Include="Lemon.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerInventory.cs" />
+    <Compile Include="IngredientsForPurchase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sugar.cs" />
+    <Compile Include="SupplyShop.cs" />
     <Compile Include="UserInterface.cs" />
   </ItemGroup>
   <ItemGroup>

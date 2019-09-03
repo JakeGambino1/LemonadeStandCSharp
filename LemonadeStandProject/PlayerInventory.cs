@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class PlayerInventory
+    public class PlayerInventory
     {
         // member variables // has a
         public int lemons;
@@ -22,9 +22,9 @@ namespace LemonadeStandProject
         }
 
         // member methods // can do
-        public int adjustInventory()
+        public int AdjustInventory()
         {
-            
+            return lemons -= 1;
         }
     }
 }

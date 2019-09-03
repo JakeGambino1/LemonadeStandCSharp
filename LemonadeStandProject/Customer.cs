@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Customer
+    public class Customer
     {
         // member variables
         public int maxPrice;
@@ -22,11 +22,10 @@ namespace LemonadeStandProject
         public bool BuyLemonade()
         {
             willBuy = false;
-            if ()
+            if (true)
             {
                 return willBuy = true;
             }
-            return false;
         }
     }
 }
