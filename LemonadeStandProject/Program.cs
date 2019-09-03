@@ -10,7 +10,7 @@ namespace LemonadeStandProject
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }
