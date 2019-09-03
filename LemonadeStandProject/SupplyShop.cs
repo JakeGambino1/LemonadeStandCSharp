@@ -22,8 +22,9 @@ namespace LemonadeStandProject
         {
             WhatToBuy();
             int amountOfIngredient = ingredientSelected.BuyXUnits(ingredientSelected);
-            ingredientSelected.CalculateTotalCost(ingredientSelected);
-            player.playerOneInventory.IncreaseInventory(amountOfIngredient, player);
+            double totalCost = ingredientSelected.CalculateTotalCost(ingredientSelected);
+            player.playerOneInventory.IncreaseInventory(amountOfIngredient, ingredientSelected);
+            player.AdjustMoney(totalCost, player);
         }
         public static IngredientsForPurchase WhatToBuy()
         {

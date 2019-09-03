@@ -29,5 +29,11 @@ namespace LemonadeStandProject
                 return true;
             }
         }
+        public void AdjustMoney(double amountSpent, Player player)
+        {
+            money -= amountSpent;
+            Console.WriteLine(money);
+            UserInterface.InitializeInterface(player);
+        }
     }
 }

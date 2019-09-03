@@ -23,11 +23,23 @@ namespace LemonadeStandProject
         }
 
         // member methods
-        public void IncreaseInventory(int amountOfIngredient, Player player)
+        public void IncreaseInventory(int amountOfIngredient, IngredientsForPurchase typeOfIngredient)
         {
-            lemons += amountOfIngredient;
-            UserInterface.InitializeInterface(player);
-            Console.ReadLine();
+            if (typeOfIngredient.name == "lemon")
+            {
+
+                lemons += amountOfIngredient;
+            }
+            else if (typeOfIngredient.name == "ice cubes")
+            {
+
+                ice += amountOfIngredient;
+            }
+            else if (typeOfIngredient.name == "sugar")
+            {
+
+                sugar += amountOfIngredient;
+            }
         }
     }
 }

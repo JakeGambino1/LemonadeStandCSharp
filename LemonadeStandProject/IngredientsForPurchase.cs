@@ -16,21 +16,21 @@ namespace LemonadeStandProject
         // constructor
         public IngredientsForPurchase()
         {
-            amountOfIngredient = 0;
         }
         public int BuyXUnits(IngredientsForPurchase ingredientSelected)
         {
             Console.WriteLine("How many would you like to buy?");
             amountOfIngredient = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(amountOfIngredient + " purchased.");
-            Console.ReadLine();
+            Console.WriteLine(amountOfIngredient + " " + ingredientSelected.name + " purchased.");
             return amountOfIngredient;
         }
-        public double CalculateTotalCost(IngredientsForPurchase ingredientSelected)
+        public double CalculateTotalCost(IngredientsForPurchase ingredientSelected) // Player player
         {
             totalPurchasePrice = amountOfIngredient * ingredientSelected.price;
             Console.WriteLine("The total cost of this purchase is $" + totalPurchasePrice);
-            Console.ReadLine();
+            //player.money -= totalPurchasePrice;
+            //Console.WriteLine(player.name + " has $" + player.money + " remaining to spend.");
+            //Console.ReadLine();
             return totalPurchasePrice;
         }
     }
