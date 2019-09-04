@@ -22,14 +22,13 @@ namespace LemonadeStandProject
         public void DisplayRules()
         {
             Console.WriteLine("You are an aspiring Lemonade Stand Tycoon. The Jeff Bezos of Lemonade Sales. But you need to work your way up.\n\n Let's start with the basics:\n\nYou start with $" + player.money + ". You need to purchase ice, sugar, and lemons. Afterwards, create a recipe for your lemonade. Colonel Sanders had a special recipe for his chicken. Get that magic number for your lemonade.\n\nThings that affect sales:\n\nCustomers have purchase preferences including temperature, precipitation, and their maximum budget for lemonade.\n\n");
-            Console.ReadLine();
         }
         public void BeginGame()
         {
             DisplayRules();
             GameDuration();
             UserInterface.InitializeInterface(player);
-            BeginDaySale();
+            GameplayLoop();
             Console.ReadLine();
         }
         public void GameDuration()
@@ -38,25 +37,38 @@ namespace LemonadeStandProject
             Console.WriteLine("How many days would you like to play? Enter a number between 1-30");
             gameLength = Convert.ToInt32(Console.ReadLine());
         }
-        public void BeginDaySale()
+        public void GameplayLoop()
         {
             for (int i = 0; i < gameLength; i++)
             {
-                while (gameShop.stopShopping == false)
+                if (gameShop.stopShopping == false)
                 {
-                    gameShop.StartShopLoop(player);
-                    BeginDayPostShop();
+                    gameShop.ShopLoop(player);
                 }
+                RecipeLoop();
+                DayLoop();
+                SummaryLoop();
             }
         }
-        public void ChooseRecipe()
+
+        public void RecipeLoop()
         {
             player.recipe.DisplayCurrentRecipe();
             player.recipe.MakeChangesToRecipe();
+            player.recipe.DisplayCurrentRecipe();
+            Console.ReadLine();
         }
-        public void BeginDayPostShop()
+        public void DayLoop()
         {
-            ChooseRecipe();
+            // customer goes to shop
+            // sees if mixture/weather is to their liking
+            // makes a purchase (or doesn't)
+            // adjust available inventory
+
+        }
+        public void SummaryLoop()
+        {
+
         }
     }
 }

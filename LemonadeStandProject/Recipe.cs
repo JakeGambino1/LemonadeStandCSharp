@@ -44,17 +44,17 @@ namespace LemonadeStandProject
                 {
                     case "lemon":
                     case "l":
-                        Console.WriteLine("Adjusting amount of lemons\nHow many would you like in the recipe?");
+                        Console.WriteLine("How many lemons would you like in the recipe?");
                         numberOfLemons = Convert.ToInt32(Console.ReadLine());
                         return;
                     case "ice":
                     case "i":
-                        Console.WriteLine("Adjusting amount of ice cubes\nHow many would you like in the recipe?");
+                        Console.WriteLine("How many ice cubes would you like in the recipe?");
                         numberOfIce = Convert.ToInt32(Console.ReadLine());
                         return;
                     case "sugar":
                     case "s":
-                        Console.WriteLine("Adjusting amount of sugar\nHow many would you like in the recipe?");
+                        Console.WriteLine("How much sugar would you like in the recipe?");
                         numberOfSugar = Convert.ToInt32(Console.ReadLine());
                         return;
                     default:
@@ -69,8 +69,6 @@ namespace LemonadeStandProject
                 return;
             }
             Console.WriteLine("You will begin the day with the following mixture:");
-            DisplayCurrentRecipe();
-            Console.ReadLine();
         }
     }
 }

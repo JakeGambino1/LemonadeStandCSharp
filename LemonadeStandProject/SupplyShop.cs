@@ -19,7 +19,7 @@ namespace LemonadeStandProject
         }
 
         // member methods
-        public void StartShopLoop(Player player)
+        public void ShopLoop(Player player)
         {
             while (stopShopping == false) 
             {
