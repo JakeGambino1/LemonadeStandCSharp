@@ -11,6 +11,7 @@ namespace LemonadeStandProject
         public Player player = new Player();
         public SupplyShop gameShop = new SupplyShop();
         public int gameLength;
+        public Customer customer = new Customer();
 
         // constructor
         public Game()
@@ -45,7 +46,10 @@ namespace LemonadeStandProject
                 {
                     gameShop.ShopLoop(player);
                 }
-                RecipeLoop();
+                if (player.RecipeAdjustment())
+                {
+                    RecipeLoop();
+                }
                 DayLoop();
                 SummaryLoop();
             }
@@ -54,13 +58,14 @@ namespace LemonadeStandProject
         public void RecipeLoop()
         {
             player.recipe.DisplayCurrentRecipe();
-            player.recipe.MakeChangesToRecipe();
+            player.recipe.ChangeRecipe();
             player.recipe.DisplayCurrentRecipe();
             Console.ReadLine();
         }
         public void DayLoop()
         {
             // customer goes to shop
+            customer.BuyLemonade(player);
             // sees if mixture/weather is to their liking
             // makes a purchase (or doesn't)
             // adjust available inventory

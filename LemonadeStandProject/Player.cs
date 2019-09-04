@@ -13,6 +13,7 @@ namespace LemonadeStandProject
         public double money;
         public PlayerInventory inventory = new PlayerInventory();
         public bool canBuy;
+        public bool adjustRecipe;
         public Recipe recipe = new Recipe();
 
         // constructor
@@ -43,9 +44,9 @@ namespace LemonadeStandProject
             UserInterface.InitializeInterface(player);
         }
 
-        public void ChooseRecipe()
+        public bool RecipeAdjustment()
         {
-
+            return recipe.ChangeRecipe();
         }
     }
 }

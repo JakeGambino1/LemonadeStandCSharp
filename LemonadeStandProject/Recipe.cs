@@ -13,6 +13,7 @@ namespace LemonadeStandProject
         public int numberOfIce;
         public int numberOfSugar;
         public bool inventoryToMake;
+        public double price;
 
         // constructor
         public Recipe()
@@ -20,9 +21,10 @@ namespace LemonadeStandProject
             numberOfLemons = 5;
             numberOfIce = 5;
             numberOfSugar = 5;
+            price = 0.25;
         }
         // member methods
-        public void NumberOfPitchers()
+        public void CupsInPitcher()
         {
 
         }
@@ -31,7 +33,7 @@ namespace LemonadeStandProject
             Console.WriteLine("Your current lemonade mixture is " + numberOfLemons + " lemons, " + numberOfIce + " ice cubes, and " + numberOfSugar + " cups of sugar.");
         }
 
-        public void MakeChangesToRecipe()
+        public bool ChangeRecipe()
         {
             Console.WriteLine("Would you like to make changes to the recipe? y/n");
             string makeChanges = Console.ReadLine().ToLower();
@@ -39,36 +41,39 @@ namespace LemonadeStandProject
             {
                 Console.WriteLine("Which ingredient would you like to adjust? lemon (l), ice cubes (i), or sugar cups (s)");
                 string ingredientChange = Console.ReadLine().ToLower();
-
                 switch (ingredientChange)
                 {
                     case "lemon":
                     case "l":
                         Console.WriteLine("How many lemons would you like in the recipe?");
                         numberOfLemons = Convert.ToInt32(Console.ReadLine());
-                        return;
+                        return true;
                     case "ice":
                     case "i":
                         Console.WriteLine("How many ice cubes would you like in the recipe?");
                         numberOfIce = Convert.ToInt32(Console.ReadLine());
-                        return;
+                        return true;
                     case "sugar":
                     case "s":
                         Console.WriteLine("How much sugar would you like in the recipe?");
                         numberOfSugar = Convert.ToInt32(Console.ReadLine());
-                        return;
+                        return true;
                     default:
                         Console.WriteLine("please make a valid selection - lemon (l), ice (i), or sugar (s)");
-                        MakeChangesToRecipe();
-                        return;
+                        ChangeRecipe();
+                        return true;
                 }
-                
             }
             else if (makeChanges == "no" || makeChanges == "n")
             {
-                return;
+                Console.WriteLine("You will begin the day with the following mixture:");
+                return false;
             }
-            Console.WriteLine("You will begin the day with the following mixture:");
+            else
+            {
+                Console.WriteLine("You made an invalid selection. please choose yes (y) or no (n)");
+                return false;
+            }
         }
     }
 }
