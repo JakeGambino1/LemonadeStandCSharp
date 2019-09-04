@@ -10,35 +10,30 @@ namespace LemonadeStandProject
     {
         // member variables
         public static IngredientsForPurchase ingredient;
-
+        public bool stopShopping;
 
         // constructor
         public SupplyShop()
         {
+            stopShopping = false;
         }
 
         // member methods
-        public void InitializeShop(Player player)
+        public void StartShopLoop(Player player)
         {
-            WhatToBuy();
-            int amountOfIngredient = ingredient.BuyXUnits(ingredient);
-            double totalCost = ingredient.CalculateTotalCost(ingredient);
-            if (player.CanBuy(totalCost))
+            while (stopShopping == false) 
             {
-                player.inventory.IncreaseInventory(amountOfIngredient, ingredient);
-                player.AdjustMoney(totalCost, player);
+                WhatToBuy();
+                VerifyPurchase(player);
+                ContinueShopping(player);
             }
-            else
-            {
-                Console.WriteLine("You don't have enough money for that! You only have $" + player.money + " available");
-            }
-
+            Console.WriteLine("Time to get the day started!");
         }
         public static IngredientsForPurchase WhatToBuy()
         {
             Console.WriteLine("What product would you like to buy? lemon (l), ice cubes (i), or sugar cups (s)");
-            string supplyPurchase = Console.ReadLine();
-            switch (supplyPurchase)
+            string ingredientChoice = Console.ReadLine();
+            switch (ingredientChoice)
             {
                 case "lemon":
                 case "l":
@@ -55,6 +50,41 @@ namespace LemonadeStandProject
                 default:
                     Console.WriteLine("please make a valid selection - lemon (l), ice (i), or sugar (s)");
                     return WhatToBuy();
+            }
+        }
+        public void VerifyPurchase(Player player)
+        {
+            int quantityOfIngredient = ingredient.BuyXUnits(ingredient);
+            double totalCost = ingredient.CalculateTotalCost(ingredient);
+
+            if (player.CanBuy(totalCost))
+            {
+                player.inventory.IncreaseInventory(quantityOfIngredient, ingredient);
+                player.AdjustMoney(totalCost, player);
+            }
+            else
+            {
+                Console.WriteLine("You don't have enough money for that! You only have $" + player.money + " available");
+            }
+        }
+        public bool ContinueShopping(Player player)
+        {
+            Console.WriteLine("would you like to purchase more products? y/n");
+            string continueShopping = Console.ReadLine();
+            if (continueShopping == "y" || continueShopping == "yes")
+            {
+                // StartShopLoop(player);
+                return stopShopping = false;
+            }
+            else if (continueShopping == "n" || continueShopping == "no")
+            {
+                Console.WriteLine("The shop has closed for the day!");
+                return stopShopping = true;
+            }
+            else
+            {
+                Console.WriteLine("Please make a proper choice -- yes (y) or no (no)");
+                return ContinueShopping(player);
             }
         }
     }
