@@ -35,7 +35,7 @@ namespace LemonadeStandProject
                 return false;
             }
         }
-        public bool IsTemperatureRight()
+        public bool IsTemperatureRight(Weather weather)
         {
             temperaturePreference = true;
             if (temperaturePreference)
@@ -44,8 +44,9 @@ namespace LemonadeStandProject
             }
             return false;
         }
-        public bool IsPrecipitationRight()
+        public bool IsPrecipitationRight(Weather weather)
         {
+            weather.temperature = 65;
             precipitationPreference = true;
             if (precipitationPreference)
             {
@@ -53,9 +54,9 @@ namespace LemonadeStandProject
             }
             return false;
         }
-        public bool LemonadePurchaseDecision(Player player)
-        {
-            if (IsLemonadeInBudget(player) && IsTemperatureRight() && IsPrecipitationRight())
+        public bool LemonadePurchaseDecision(Player player, Weather weather)
+        { 
+            if (IsLemonadeInBudget(player) && IsTemperatureRight(weather) && IsPrecipitationRight(weather))
             {
                 return true;
             }
@@ -64,12 +65,11 @@ namespace LemonadeStandProject
                 return false;
             }
         }
-        public void BuyLemonade(Player player)
+        public void BuyLemonade(Player player, Weather weather)
         {
-            if (LemonadePurchaseDecision(player)) { 
+            if (LemonadePurchaseDecision(player, weather)) { 
                 player.money += player.recipe.price;
                 Console.WriteLine(name + " has purchased your lemonade for $" + player.recipe.price + ". " + player.name + " now has $" + player.money + " available." );
-                Console.ReadLine();
             }
         }
     }

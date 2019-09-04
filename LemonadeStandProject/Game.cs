@@ -12,11 +12,14 @@ namespace LemonadeStandProject
         public SupplyShop gameShop = new SupplyShop();
         public int gameLength;
         public Customer customer = new Customer();
+        public int dayCount;
+        public Weather weather = new Weather();
 
         // constructor
         public Game()
         {
             gameLength = 1;
+            dayCount = 1;
         }
 
         //member methods // can do
@@ -50,7 +53,7 @@ namespace LemonadeStandProject
                 {
                     RecipeLoop();
                 }
-                DayLoop();
+                DayLoop(weather);
                 SummaryLoop();
             }
         }
@@ -62,14 +65,17 @@ namespace LemonadeStandProject
             player.recipe.DisplayCurrentRecipe();
             Console.ReadLine();
         }
-        public void DayLoop()
+        public void DayLoop(Weather weather)
         {
+            dayCount++;
+            Console.WriteLine("You are now on Day " + dayCount);
             // customer goes to shop
-            customer.BuyLemonade(player);
+            customer.BuyLemonade(player, weather);
+            gameShop.stopShopping = false;
+
             // sees if mixture/weather is to their liking
             // makes a purchase (or doesn't)
             // adjust available inventory
-
         }
         public void SummaryLoop()
         {

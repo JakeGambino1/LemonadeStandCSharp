@@ -14,6 +14,7 @@ namespace LemonadeStandProject
         public PlayerInventory inventory = new PlayerInventory();
         public bool canBuy;
         public bool adjustRecipe;
+        public bool purchaseMore;
         public Recipe recipe = new Recipe();
 
         // constructor
@@ -47,6 +48,24 @@ namespace LemonadeStandProject
         public bool RecipeAdjustment()
         {
             return recipe.ChangeRecipe();
+        }
+        public bool VisitShop()
+        {
+            Console.WriteLine("Would you like to visit the shop again? 'yes' ('y') or 'no' ('n')");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes" || userInput == "y")
+            {
+                return true;
+            }
+            else if (userInput == "no" || userInput == "n")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option. Please type 'yes' ('y') or 'no' ('n')");
+                return VisitShop();
+            }
         }
     }
 }

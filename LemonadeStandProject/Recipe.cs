@@ -60,19 +60,19 @@ namespace LemonadeStandProject
                         return true;
                     default:
                         Console.WriteLine("please make a valid selection - lemon (l), ice (i), or sugar (s)");
-                        ChangeRecipe();
-                        return true;
+                        return ChangeRecipe();
                 }
             }
             else if (makeChanges == "no" || makeChanges == "n")
             {
                 Console.WriteLine("You will begin the day with the following mixture:");
+                DisplayCurrentRecipe();
                 return false;
             }
             else
             {
                 Console.WriteLine("You made an invalid selection. please choose yes (y) or no (n)");
-                return false;
+                return ChangeRecipe();
             }
         }
     }
