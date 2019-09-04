@@ -11,22 +11,28 @@ namespace LemonadeStandProject
         // member variables // has a
         public string name;
         public double money;
-        public PlayerInventory playerOneInventory = new PlayerInventory();
+        public PlayerInventory inventory = new PlayerInventory();
+        public bool canBuy;
 
         // constructor
         public Player()
         {
             Console.WriteLine("what would you like the player name to be?");
             name = Console.ReadLine();
-            money = 20.00;
+            money = 20;
+            canBuy = false;
         }
 
         // member methods // can do
-        public bool CanBuy()
+        public bool CanBuy(double totalCost)
         {
-            if (1 > 0)
+            if (money >= totalCost)
             {
                 return true;
+            }
+            else
+            {
+                return false;
             }
         }
         public void AdjustMoney(double amountSpent, Player player)

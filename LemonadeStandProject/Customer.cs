@@ -10,21 +10,23 @@ namespace LemonadeStandProject
     {
         // member variables
         public int maxPrice;
-        public bool willBuy;
+        public bool hasBudgetForLemonade;
+        public double money;
+        public bool temperaturePreference;
+        public bool precipitationPreference;
 
         // constructor
         public Customer()
         {
-            willBuy = false;
         }
 
         // member methods
         public bool BuyLemonade()
         {
-            willBuy = false;
+            hasBudgetForLemonade = false;
             if (true)
             {
-                return willBuy = true;
+                return hasBudgetForLemonade = true;
             }
         }
     }

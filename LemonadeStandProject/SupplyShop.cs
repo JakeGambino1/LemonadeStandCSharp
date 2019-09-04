@@ -9,7 +9,7 @@ namespace LemonadeStandProject
     public class SupplyShop
     {
         // member variables
-        public static IngredientsForPurchase ingredientSelected;
+        public static IngredientsForPurchase ingredient;
 
 
         // constructor
@@ -21,10 +21,18 @@ namespace LemonadeStandProject
         public void InitializeShop(Player player)
         {
             WhatToBuy();
-            int amountOfIngredient = ingredientSelected.BuyXUnits(ingredientSelected);
-            double totalCost = ingredientSelected.CalculateTotalCost(ingredientSelected);
-            player.playerOneInventory.IncreaseInventory(amountOfIngredient, ingredientSelected);
-            player.AdjustMoney(totalCost, player);
+            int amountOfIngredient = ingredient.BuyXUnits(ingredient);
+            double totalCost = ingredient.CalculateTotalCost(ingredient);
+            if (player.CanBuy(totalCost))
+            {
+                player.inventory.IncreaseInventory(amountOfIngredient, ingredient);
+                player.AdjustMoney(totalCost, player);
+            }
+            else
+            {
+                Console.WriteLine("You don't have enough money for that! You only have $" + player.money + " available");
+            }
+
         }
         public static IngredientsForPurchase WhatToBuy()
         {
@@ -35,15 +43,15 @@ namespace LemonadeStandProject
                 case "lemon":
                 case "l":
                     Console.WriteLine("purchasing lemons");
-                    return ingredientSelected = new Lemon();
+                    return ingredient = new Lemon();
                 case "ice":
                 case "i":
                     Console.WriteLine("purchasing ice cubes");
-                    return ingredientSelected = new IceCubes();
+                    return ingredient = new IceCubes();
                 case "sugar":
                 case "s":
                     Console.WriteLine("purchasing sugar");
-                    return ingredientSelected = new Sugar();
+                    return ingredient = new Sugar();
                 default:
                     Console.WriteLine("please make a valid selection - lemon (l), ice (i), or sugar (s)");
                     return WhatToBuy();

@@ -23,22 +23,19 @@ namespace LemonadeStandProject
         }
 
         // member methods
-        public void IncreaseInventory(int amountOfIngredient, IngredientsForPurchase typeOfIngredient)
+        public void IncreaseInventory(int amountPurchased, IngredientsForPurchase ingredient)
         {
-            if (typeOfIngredient.name == "lemon")
+            if (ingredient.name == "lemon")
             {
-
-                lemons += amountOfIngredient;
+                lemons += amountPurchased;
             }
-            else if (typeOfIngredient.name == "ice cubes")
+            else if (ingredient.name == "ice cubes")
             {
-
-                ice += amountOfIngredient;
+                ice += amountPurchased;
             }
-            else if (typeOfIngredient.name == "sugar")
+            else if (ingredient.name == "sugar")
             {
-
-                sugar += amountOfIngredient;
+                sugar += amountPurchased;
             }
         }
     }

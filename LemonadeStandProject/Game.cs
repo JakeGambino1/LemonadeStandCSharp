@@ -34,6 +34,7 @@ namespace LemonadeStandProject
         public void GameLoop()
         {
             gameShop.InitializeShop(player);
+            GameLoop();
         }
     }
 }

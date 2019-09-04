@@ -29,9 +29,9 @@ namespace LemonadeStandProject
         public static void DisplayInventory(Player player)
         {
             Console.WriteLine("Their remaining inventory:\n" + 
-                player.playerOneInventory.lemons + " lemons\n" + 
-                player.playerOneInventory.ice + " ice\n" + 
-                player.playerOneInventory.sugar + " sugar\n");
+                player.inventory.lemons + " lemons\n" + 
+                player.inventory.ice + " ice\n" + 
+                player.inventory.sugar + " sugar\n");
         }
         public static void DisplayCurrentDay()
         {
