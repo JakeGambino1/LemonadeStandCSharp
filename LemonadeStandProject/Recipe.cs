@@ -10,8 +10,8 @@ namespace LemonadeStandProject
     {
         // member variables
         public int numberOfLemons;
-        public int numberOfIce;
-        public int numberOfSugar;
+        public int amountOfIceCubes;
+        public int amountOfSugar;
         public bool inventoryToMake;
         public double price;
 
@@ -19,8 +19,8 @@ namespace LemonadeStandProject
         public Recipe()
         {
             numberOfLemons = 5;
-            numberOfIce = 5;
-            numberOfSugar = 5;
+            amountOfIceCubes = 5;
+            amountOfSugar = 5;
             price = 0.25;
         }
         // member methods
@@ -30,7 +30,7 @@ namespace LemonadeStandProject
         }
         public void DisplayCurrentRecipe()
         {
-            Console.WriteLine("Your current lemonade mixture is " + numberOfLemons + " lemons, " + numberOfIce + " ice cubes, and " + numberOfSugar + " cups of sugar.");
+            Console.WriteLine("Your current lemonade mixture is " + numberOfLemons + " lemons, " + amountOfIceCubes + " ice cubes, and " + amountOfSugar + " cups of sugar.");
         }
 
         public bool ChangeRecipe()
@@ -51,12 +51,12 @@ namespace LemonadeStandProject
                     case "ice":
                     case "i":
                         Console.WriteLine("How many ice cubes would you like in the recipe?");
-                        numberOfIce = Convert.ToInt32(Console.ReadLine());
+                        amountOfIceCubes = Convert.ToInt32(Console.ReadLine());
                         return true;
                     case "sugar":
                     case "s":
                         Console.WriteLine("How much sugar would you like in the recipe?");
-                        numberOfSugar = Convert.ToInt32(Console.ReadLine());
+                        amountOfSugar = Convert.ToInt32(Console.ReadLine());
                         return true;
                     default:
                         Console.WriteLine("please make a valid selection - lemon (l), ice (i), or sugar (s)");

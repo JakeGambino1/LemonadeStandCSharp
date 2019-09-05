@@ -12,10 +12,11 @@ namespace LemonadeStandProject
         public string name;
         public double money;
         public PlayerInventory inventory = new PlayerInventory();
-        public bool canBuy;
-        public bool adjustRecipe;
-        public bool purchaseMore;
         public Recipe recipe = new Recipe();
+        public double dailyProfit;
+        public int pitcherOfLemonade;
+        // pitcherOfLemonade should be its own object, with cups as a parameter.
+        public int cupsOfLemonade;
 
         // constructor
         public Player()
@@ -23,31 +24,29 @@ namespace LemonadeStandProject
             Console.WriteLine("what would you like the player name to be?");
             name = Console.ReadLine();
             money = 20;
-            canBuy = false;
         }
 
         // member methods // can do
-        public bool CanBuy(double totalCost)
+        public bool RecipeAdjustment()
         {
-            if (money >= totalCost)
+            recipe.DisplayCurrentRecipe();
+            return recipe.ChangeRecipe();
+        }
+        public void MakeLemonadePitcher(Recipe recipe, PlayerInventory inventory)
+        {
+            if (inventory.lemons >= recipe.numberOfLemons && inventory.ice >= recipe.amountOfIceCubes && inventory.sugar >= recipe.amountOfSugar)
             {
-                return true;
+            inventory.lemons -= recipe.numberOfLemons;
+            inventory.ice -= recipe.amountOfIceCubes;
+            inventory.sugar -= recipe.amountOfSugar;
+            Console.WriteLine("You made a new pitcher of lemonade. Your remaining inventory is:\n" + inventory.lemons + " lemons, " + inventory.ice + " ice, and " + inventory.sugar + " sugar. Hopefully you can make it through day!");
+            pitcherOfLemonade += 1;
+            cupsOfLemonade += 6;
             }
             else
             {
-                return false;
+                Console.WriteLine("You don't have enough inventory to make a pitcher of lemonade. Visit the shop or adjust your recipe!");
             }
-        }
-        public void AdjustMoney(double amountSpent, Player player)
-        {
-            money -= amountSpent;
-            Console.WriteLine(money);
-            UserInterface.InitializeInterface(player);
-        }
-
-        public bool RecipeAdjustment()
-        {
-            return recipe.ChangeRecipe();
         }
         public bool VisitShop()
         {
@@ -66,6 +65,31 @@ namespace LemonadeStandProject
                 Console.WriteLine("Invalid option. Please type 'yes' ('y') or 'no' ('n')");
                 return VisitShop();
             }
+        }
+        public bool CanBuy(double totalCost)
+        {
+            if (money >= totalCost)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void PurchaseIngredients(double amountSpent, Player player)
+        {
+            money -= amountSpent;
+            Console.WriteLine(money);
+            UserInterface.InitializeInterface(player);
+        }
+        public void DailyInventoryAdjustment()
+        {
+            Console.WriteLine("Your daily profit of $" + dailyProfit + " has been added to your wallet.");
+            money += dailyProfit;
+            dailyProfit = 0;
+            Console.WriteLine("You now have $" + money + " available.");
+            cupsOfLemonade = 0;
         }
     }
 }

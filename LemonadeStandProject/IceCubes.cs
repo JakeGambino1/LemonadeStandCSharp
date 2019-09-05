@@ -11,7 +11,7 @@ namespace LemonadeStandProject
         public IceCubes()
         {
             name = "ice cubes";
-            price = 0.50;
+            price = 0.03;
         }
     }
 }

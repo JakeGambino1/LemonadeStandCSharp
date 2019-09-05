@@ -12,7 +12,6 @@ namespace LemonadeStandProject
         public int lemons;
         public int ice;
         public int sugar;
-        public double increaseInInventory;
 
         // constructor
         public PlayerInventory()
@@ -38,5 +37,9 @@ namespace LemonadeStandProject
                 sugar += amountPurchased;
             }
         }
+        //public void DecreaseInventory(int lemons, int ice, int sugar)
+        //{
+
+        //}
     }
 }

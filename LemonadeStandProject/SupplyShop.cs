@@ -67,7 +67,7 @@ namespace LemonadeStandProject
             if (player.CanBuy(totalCost))
             {
                 player.inventory.IncreaseInventory(quantityOfIngredient, ingredient);
-                player.AdjustMoney(totalCost, player);
+                player.PurchaseIngredients(totalCost, player);
             }
             else
             {

@@ -23,6 +23,7 @@ namespace LemonadeStandProject
         }
 
         //member methods // can do
+        // Single Responsibility #1 - BeginGame Method. This methods only responsibility is to begin the game. It displays rules, gets the game duration and interface, and then initializes the game loop. It's only job is to start the game.
         public void BeginGame()
         {
             DisplayRules();
@@ -61,7 +62,6 @@ namespace LemonadeStandProject
 
         public void RecipeLoop()
         {
-            player.recipe.DisplayCurrentRecipe();
             player.recipe.ChangeRecipe();
             player.recipe.DisplayCurrentRecipe();
             Console.ReadLine();
@@ -70,8 +70,10 @@ namespace LemonadeStandProject
         {
             dayCount++;
             Console.WriteLine("You are now on Day " + dayCount);
+            player.MakeLemonadePitcher(player.recipe, player.inventory);
             // customer goes to shop
             customer.BuyLemonade(player, weather);
+            Console.WriteLine("You have " + player.cupsOfLemonade + " cups of lemonade remaining.");
             gameShop.stopShopping = false;
 
             // sees if mixture/weather is to their liking
@@ -80,7 +82,9 @@ namespace LemonadeStandProject
         }
         public void SummaryLoop()
         {
-
+            player.DailyInventoryAdjustment();
+            UserInterface.DisplayForecast();
+            UserInterface.DisplayRemainingDays();
         }
     }
 }
