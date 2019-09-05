@@ -31,7 +31,7 @@ namespace LemonadeStandProject
         }
         public static double PriceGenerator()
         {
-            return priceGenerator.Next(.25, .75);
+            return 0.25;
         }
     }
 }

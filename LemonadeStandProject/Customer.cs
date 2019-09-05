@@ -28,6 +28,7 @@ namespace LemonadeStandProject
             }
             else
             {
+                Console.WriteLine("Customer can't afford the lemonade");
                 return false;
             }
         }
@@ -47,6 +48,7 @@ namespace LemonadeStandProject
             {
                 return true;
             }
+            Console.WriteLine("Customer doesn't want shit in this weather.");
             return false;
         }
         public bool LemonadePurchaseDecision(Player player, Weather weather)

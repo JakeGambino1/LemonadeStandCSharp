@@ -12,7 +12,7 @@ namespace LemonadeStandProject
         public SupplyShop gameShop = new SupplyShop();
         public int gameLength;
         public int dayCount;
-        public List<Weather> weather = new List<Weather>();
+        public List<Weather> weatherList = new List<Weather>();
         public List<Customer> customers = new List<Customer>();
         //public Weather weather = new Weather(1, false, 60);
 
@@ -47,12 +47,7 @@ namespace LemonadeStandProject
         {
             for (int i = 0; i < numberOfDays; i++)
             {
-                weather.Add(new Weather(i, RandomGenerator.BoolGenerator(), RandomGenerator.TemperatureGenerator()));
-            }
-
-            foreach (Weather weather in weather)
-            {
-                Console.WriteLine(weather.temperature);
+                weatherList.Add(new Weather(i, RandomGenerator.BoolGenerator(), RandomGenerator.TemperatureGenerator()));
             }
         }
         public void GameplayLoop()
@@ -67,7 +62,8 @@ namespace LemonadeStandProject
                 {
                     RecipeLoop();
                 }
-                DaySalesLoop(weather);
+                Console.Write("\n" + weatherList.First().temperature + "\n");
+                DaySalesLoop(weatherList);
                 SummaryLoop();
                 dayCount++;
                 Console.WriteLine("Welcome to Day " + dayCount);
@@ -81,13 +77,13 @@ namespace LemonadeStandProject
             Console.ReadLine();
         }
         public void DaySalesLoop(List<Weather> weather)
-        { //make for loop where it increments after the day is done
+        {
             player.MakeLemonadePitcher(player.recipe, player.inventory);
 
             if (weather.First().temperature <= 50)
             {
-                //RepeatList(15, customers);
-                for (int i = 0; i < 15; i++) { 
+                for (int i = 0; i < 15; i++)
+                {
                     customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.TemperatureGenerator()));
                 }
             }
@@ -115,21 +111,10 @@ namespace LemonadeStandProject
 
             for (int i = 0; i < customers.Count(); i++)
             {
-
+                customers.First().BuyLemonade(player, weather.First());
+                customers.RemoveAt(0);
             }
-            // customer goes to shop
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
-            //customer.BuyLemonade(player, weather);
+            weather.RemoveAt(0);
             Console.WriteLine("You have " + player.cupsOfLemonade + " cups of lemonade remaining.");
             gameShop.stopShopping = false;
             customers.Clear();
