@@ -13,7 +13,10 @@ namespace LemonadeStandProject
         public double money;
         public PlayerInventory inventory = new PlayerInventory();
         public Recipe recipe = new Recipe();
+        public double dailyCostOfGoodsSold;
+        public double totalCostOfGoodsSold;
         public double dailyProfit;
+        public double totalDailyProfits;
         public int pitcherOfLemonade;
         // pitcherOfLemonade should be its own object, with cups as a parameter.
         public int cupsOfLemonade;
@@ -80,16 +83,22 @@ namespace LemonadeStandProject
         public void PurchaseIngredients(double amountSpent, Player player)
         {
             money -= amountSpent;
+            dailyCostOfGoodsSold += amountSpent;
             Console.WriteLine(money);
             UserInterface.InitializeInterface(player);
         }
-        public void DailyInventoryAdjustment()
+        public int DailyInventoryAdjustment(int dayCount)
         {
-            Console.WriteLine("Your daily profit of $" + dailyProfit + " has been added to your wallet.");
+            double dailyNetProfit = dailyProfit - dailyCostOfGoodsSold;
+            Console.WriteLine("Your daily profit of $" + dailyProfit + " has been added to your wallet. Your expenses for today was $" + dailyCostOfGoodsSold + ". Your net profit for today was $" + dailyNetProfit + ".") ;
             money += dailyProfit;
+            totalDailyProfits += dailyProfit;
             dailyProfit = 0;
+            totalCostOfGoodsSold += dailyCostOfGoodsSold;
+            dailyCostOfGoodsSold = 0;
             Console.WriteLine("You now have $" + money + " available.");
             cupsOfLemonade = 0;
+            return dayCount++;
         }
     }
 }

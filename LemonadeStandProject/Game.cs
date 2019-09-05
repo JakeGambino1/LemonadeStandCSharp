@@ -54,9 +54,10 @@ namespace LemonadeStandProject
                 {
                     RecipeLoop();
                 }
-
-                DayLoop(weather);
+                Console.Clear();
+                DaySalesLoop(weather);
                 SummaryLoop();
+                Console.WriteLine("It is time to start Day " + dayCount);
             }
         }
 
@@ -66,23 +67,17 @@ namespace LemonadeStandProject
             player.recipe.DisplayCurrentRecipe();
             Console.ReadLine();
         }
-        public void DayLoop(Weather weather)
+        public void DaySalesLoop(Weather weather)
         {
-            dayCount++;
-            Console.WriteLine("You are now on Day " + dayCount);
             player.MakeLemonadePitcher(player.recipe, player.inventory);
             // customer goes to shop
             customer.BuyLemonade(player, weather);
             Console.WriteLine("You have " + player.cupsOfLemonade + " cups of lemonade remaining.");
             gameShop.stopShopping = false;
-
-            // sees if mixture/weather is to their liking
-            // makes a purchase (or doesn't)
-            // adjust available inventory
         }
         public void SummaryLoop()
         {
-            player.DailyInventoryAdjustment();
+            player.DailyInventoryAdjustment(dayCount);
             UserInterface.DisplayForecast();
             UserInterface.DisplayRemainingDays();
         }

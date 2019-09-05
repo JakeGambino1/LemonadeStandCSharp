@@ -28,7 +28,6 @@ namespace LemonadeStandProject
             BudgetForLemonade = true;
             if (maxPrice >= player.recipe.price)
             {
-                Console.WriteLine(name + " has enough money to buy a cup of lemonade.");
                 return BudgetForLemonade = true;
             }
             else
@@ -40,8 +39,7 @@ namespace LemonadeStandProject
         {
             weather.temperature = 60;
             if (temperaturePreference >= weather.temperature - 7 && temperaturePreference <= weather.temperature + 7)
-            {
-                Console.Write("The temperature is wunderbar and " + name + " is ready to get their drink on!\n");
+            { 
                 return true;
             }
             Console.WriteLine(name + " is not in the mood for lemonade in this weather.\n");
@@ -69,10 +67,14 @@ namespace LemonadeStandProject
         }
         public void BuyLemonade(Player player, Weather weather)
         {
-            if (LemonadePurchaseDecision(player, weather)) { 
+            if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade > 0) { 
                 player.dailyProfit += player.recipe.price;
                 Console.WriteLine(name + " has purchased your lemonade for $" + player.recipe.price + ".");
                 player.cupsOfLemonade -= 1;
+            }
+            else if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade <=0)
+            {
+                Console.WriteLine("Customer wanted to buy product, but you ran out of product.");
             }
         }
     }
