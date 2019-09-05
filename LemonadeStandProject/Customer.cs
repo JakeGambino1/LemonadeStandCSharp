@@ -9,26 +9,24 @@ namespace LemonadeStandProject
     public class Customer
     {
         // member variables
+        public string name;
         public double maxPrice;
-        public bool BudgetForLemonade;
         public int temperaturePreference;
         public bool precipitationPreference;
-        public string name;
 
         // constructor
-        public Customer()
+        public Customer(string name, double maxPrice, int temperaturePreference)
         {
-            name = "First Customer";
-            maxPrice = 0.30;
-            temperaturePreference = 60;
+            this.name = name;
+            this.maxPrice = maxPrice;
+            this.temperaturePreference = temperaturePreference;
         }
         // member methods
         public bool IsLemonadeInBudget(Player player)
         {
-            BudgetForLemonade = true;
             if (maxPrice >= player.recipe.price)
             {
-                return BudgetForLemonade = true;
+                return true;
             }
             else
             {
@@ -37,7 +35,6 @@ namespace LemonadeStandProject
         }
         public bool IsTemperatureRight(Weather weather)
         {
-            weather.temperature = 60;
             if (temperaturePreference >= weather.temperature - 7 && temperaturePreference <= weather.temperature + 7)
             { 
                 return true;
@@ -67,14 +64,18 @@ namespace LemonadeStandProject
         }
         public void BuyLemonade(Player player, Weather weather)
         {
-            if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade > 0) { 
+            if (player.cupsOfLemonade == 0)
+            {
+                player.MakeLemonadePitcher(player.recipe, player.inventory);
+            }
+            else if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade > 0) { 
                 player.dailyProfit += player.recipe.price;
                 Console.WriteLine(name + " has purchased your lemonade for $" + player.recipe.price + ".");
                 player.cupsOfLemonade -= 1;
             }
             else if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade <=0)
             {
-                Console.WriteLine("Customer wanted to buy product, but you ran out of product.");
+                Console.WriteLine("Customer wanted to buy product, but you ran out.");
             }
         }
     }

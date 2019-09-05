@@ -11,7 +11,7 @@ namespace LemonadeStandProject
         public Player player = new Player();
         public SupplyShop gameShop = new SupplyShop();
         public int gameLength;
-        public Customer customer = new Customer();
+        public Customer customer = new Customer("Bob", 0.30, 65);
         public int dayCount;
         public Weather weather = new Weather();
 
@@ -49,7 +49,6 @@ namespace LemonadeStandProject
                 {
                     gameShop.ShopLoop(player);
                 }
-
                 if (player.RecipeAdjustment())
                 {
                     RecipeLoop();
@@ -71,6 +70,14 @@ namespace LemonadeStandProject
         {
             player.MakeLemonadePitcher(player.recipe, player.inventory);
             // customer goes to shop
+            customer.BuyLemonade(player, weather);
+            customer.BuyLemonade(player, weather);
+            customer.BuyLemonade(player, weather);
+            customer.BuyLemonade(player, weather);
+            customer.BuyLemonade(player, weather);
+            customer.BuyLemonade(player, weather);
+            customer.BuyLemonade(player, weather);
+            customer.BuyLemonade(player, weather);
             customer.BuyLemonade(player, weather);
             Console.WriteLine("You have " + player.cupsOfLemonade + " cups of lemonade remaining.");
             gameShop.stopShopping = false;

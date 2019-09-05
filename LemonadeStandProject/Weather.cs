@@ -9,12 +9,16 @@ namespace LemonadeStandProject
     public class Weather
     {
         // member variables
+        public int day;
         public bool precipitation;
         public int temperature;
 
         // constructor
-        public Weather()
+        public Weather(int day, bool precipitation, int temperature)
         {
+            this.day = day;
+            this.precipitation = precipitation;
+            this.temperature = temperature;
         }
         // member methods
         public int AdjustTemperature()
