@@ -11,7 +11,7 @@ namespace LemonadeStandProject
         // member variables
         public double maxPrice;
         public bool hasBudgetForLemonade;
-        public bool temperaturePreference;
+        public int temperaturePreference;
         public bool precipitationPreference;
         public string name;
 
@@ -20,6 +20,7 @@ namespace LemonadeStandProject
         {
             name = "First Customer";
             maxPrice = 0.30;
+            temperaturePreference = 60;
         }
         // member methods
         public bool IsLemonadeInBudget(Player player)
@@ -31,22 +32,23 @@ namespace LemonadeStandProject
                 return hasBudgetForLemonade = true;
             }
             else
-            { 
+            {
                 return false;
             }
         }
         public bool IsTemperatureRight(Weather weather)
         {
-            temperaturePreference = true;
-            if (temperaturePreference)
+            weather.temperature = 60;
+            if (temperaturePreference >= weather.temperature - 7 && temperaturePreference <= weather.temperature + 7)
             {
+                Console.Write("The temperature is wunderbar and " + name + " is ready to get their drink on!\n");
                 return true;
             }
+            Console.WriteLine(name + " is not in the mood for lemonade in this weather.\n");
             return false;
         }
         public bool IsPrecipitationRight(Weather weather)
         {
-            weather.temperature = 65;
             precipitationPreference = true;
             if (precipitationPreference)
             {
