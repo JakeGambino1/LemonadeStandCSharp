@@ -17,17 +17,17 @@ namespace LemonadeStandProject
         public Weather(int day, bool precipitation, int temperature)
         {
             this.day = day;
-            this.precipitation = precipitation;
-            this.temperature = temperature;
+            this.precipitation = IsRaining();
+            this.temperature = SetTemperature();
         }
         // member methods
-        public int AdjustTemperature()
+        public int SetTemperature()
         {
-            return temperature = 65;
+            return RandomGenerator.TemperatureGenerator();
         }
         public bool IsRaining()
         {
-            return precipitation = true;
+            return RandomGenerator.BoolGenerator();
         }
     }
 }

@@ -12,12 +12,6 @@ namespace LemonadeStandProject
         public static IngredientsForPurchase ingredient;
         public bool stopShopping;
 
-        // constructor
-        public SupplyShop()
-        {
-
-        }
-
         // member methods
         public void ShopLoop(Player player)
         {

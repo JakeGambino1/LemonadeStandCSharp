@@ -9,15 +9,13 @@ namespace LemonadeStandProject
     public class Customer
     {
         // member variables
-        public string name;
         public double maxPrice;
         public int temperaturePreference;
         public bool precipitationPreference;
 
         // constructor
-        public Customer(string name, double maxPrice, int temperaturePreference)
+        public Customer(double maxPrice, int temperaturePreference)
         {
-            this.name = name;
             this.maxPrice = maxPrice;
             this.temperaturePreference = temperaturePreference;
         }
@@ -39,7 +37,7 @@ namespace LemonadeStandProject
             { 
                 return true;
             }
-            Console.WriteLine(name + " is not in the mood for lemonade in this weather.\n");
+            Console.WriteLine("Customer is not in the mood for lemonade in this weather.\n");
             return false;
         } 
         public bool IsPrecipitationRight(Weather weather)
@@ -70,7 +68,7 @@ namespace LemonadeStandProject
             }
             else if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade > 0) { 
                 player.dailyProfit += player.recipe.price;
-                Console.WriteLine(name + " has purchased your lemonade for $" + player.recipe.price + ".");
+                Console.WriteLine("A customer has purchased your lemonade for $" + player.recipe.price + ".");
                 player.cupsOfLemonade -= 1;
             }
             else if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade <=0)

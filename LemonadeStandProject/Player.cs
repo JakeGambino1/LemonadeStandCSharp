@@ -87,7 +87,7 @@ namespace LemonadeStandProject
             Console.WriteLine(money);
             UserInterface.InitializeInterface(player);
         }
-        public int DailyInventoryAdjustment(int dayCount)
+        public void DailyInventoryAdjustment()
         {
             double dailyNetProfit = dailyProfit - dailyCostOfGoodsSold;
             Console.WriteLine("Your daily profit of $" + dailyProfit + " has been added to your wallet. Your expenses for today was $" + dailyCostOfGoodsSold + ". Your net profit for today was $" + dailyNetProfit + ".") ;
@@ -98,7 +98,6 @@ namespace LemonadeStandProject
             dailyCostOfGoodsSold = 0;
             Console.WriteLine("You now have $" + money + " available.");
             cupsOfLemonade = 0;
-            return dayCount++;
         }
     }
 }
