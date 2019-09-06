@@ -8,18 +8,16 @@ namespace LemonadeStandProject
 {
     public class Customer
     {
-        // member variables
         public double maxPrice;
         public int temperaturePreference;
         public bool precipitationPreference;
 
-        // constructor
         public Customer(double maxPrice, int temperaturePreference)
         {
             this.maxPrice = maxPrice;
             this.temperaturePreference = temperaturePreference;
         }
-        // member methods
+
         public bool IsLemonadeInBudget(Player player)
         {
             if (maxPrice >= player.recipe.price)

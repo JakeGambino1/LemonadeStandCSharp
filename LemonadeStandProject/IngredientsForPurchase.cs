@@ -8,15 +8,15 @@ namespace LemonadeStandProject
 {
     public class IngredientsForPurchase
     {
-        // member variables
         public double price;
         public string name;
         public int ingredientAmount;
         public double totalPurchasePrice;
-        // constructor
+        
         public IngredientsForPurchase()
         {
         }
+
         public int BuyXUnits(IngredientsForPurchase ingredientChoice)
         {
             Console.WriteLine("How many would you like to buy?");

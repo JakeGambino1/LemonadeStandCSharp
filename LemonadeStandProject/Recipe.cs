@@ -8,25 +8,18 @@ namespace LemonadeStandProject
 {
     public class Recipe
     {
-        // member variables
         public int numberOfLemons;
         public int amountOfIceCubes;
         public int amountOfSugar;
         public bool inventoryToMake;
         public double price;
 
-        // constructor
         public Recipe()
         {
             numberOfLemons = 5;
             amountOfIceCubes = 5;
             amountOfSugar = 5;
             price = .50;
-        }
-        // member methods
-        public void DisplayCurrentRecipe()
-        {
-            Console.WriteLine("Your current lemonade mixture is " + numberOfLemons + " lemons, " + amountOfIceCubes + " ice cubes, and " + amountOfSugar + " cups of sugar. The recommended/starting sale price is $" + price + ".");
         }
 
         public bool ChangeRecipe()

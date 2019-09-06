@@ -8,7 +8,6 @@ namespace LemonadeStandProject
 {
     public class Player
     {
-        // member variables // has a
         public string name;
         public double money;
         public PlayerInventory inventory = new PlayerInventory();
@@ -21,7 +20,6 @@ namespace LemonadeStandProject
         // pitcherOfLemonade should be its own object, with cups as a parameter.
         public int cupsOfLemonade;
 
-        // constructor
         public Player()
         {
             Console.WriteLine("what would you like the player name to be?");
@@ -29,10 +27,9 @@ namespace LemonadeStandProject
             money = 20;
         }
 
-        // member methods // can do
         public bool RecipeAdjustment()
         {
-            recipe.DisplayCurrentRecipe();
+            UserInterface.DisplayCurrentRecipe(recipe);
             return recipe.ChangeRecipe();
         }
         public void MakeLemonadePitcher(Recipe recipe, PlayerInventory inventory)
@@ -80,17 +77,14 @@ namespace LemonadeStandProject
                 return false;
             }
         }
-        public void PurchaseIngredients(double amountSpent, Player player)
+        public void PurchaseIngredients(double amountSpent)
         {
             money -= amountSpent;
             dailyCostOfGoodsSold += amountSpent;
-            Console.WriteLine(money);
-            UserInterface.InitializeInterface(player);
         }
-        public void DailyInventoryAdjustment()
+        public void DailyInventoryAdjustment(Player player)
         {
-            double dailyNetProfit = dailyProfit - dailyCostOfGoodsSold;
-            Console.WriteLine("Your daily profit of $" + dailyProfit + " has been added to your wallet. Your expenses for today was $" + dailyCostOfGoodsSold + ". Your net profit for today was $" + dailyNetProfit + ".") ;
+            UserInterface.DisplayProfit(player);
             money += dailyProfit;
             totalDailyProfits += dailyProfit;
             dailyProfit = 0;

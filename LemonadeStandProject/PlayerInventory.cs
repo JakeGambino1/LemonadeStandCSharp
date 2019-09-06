@@ -8,12 +8,10 @@ namespace LemonadeStandProject
 {
     public class PlayerInventory
     {
-        // member variables
         public int lemons;
         public int ice;
         public int sugar;
 
-        // constructor
         public PlayerInventory()
         {
             lemons = 0;
@@ -21,7 +19,6 @@ namespace LemonadeStandProject
             sugar = 0;
         }
 
-        // member methods
         public void IncreaseInventory(int amountPurchased, IngredientsForPurchase ingredient)
         {
             if (ingredient.name == "lemon")
@@ -37,9 +34,5 @@ namespace LemonadeStandProject
                 sugar += amountPurchased;
             }
         }
-        //public void DecreaseInventory(int lemons, int ice, int sugar)
-        //{
-
-        //}
     }
 }

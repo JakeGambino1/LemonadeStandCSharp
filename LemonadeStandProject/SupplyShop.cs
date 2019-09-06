@@ -8,11 +8,9 @@ namespace LemonadeStandProject
 {
     public class SupplyShop
     {
-        // member variables
         public static IngredientsForPurchase ingredient;
         public bool stopShopping;
 
-        // member methods
         public void ShopLoop(Player player)
         {
             while (true) 
@@ -22,12 +20,12 @@ namespace LemonadeStandProject
                 {
                     break;
                 }
-                WhatToBuy();
+                WhatToBuy(player);
                 VerifyPurchase(player);
             }
             Console.WriteLine("Time to get the day started!");
         }
-        public static IngredientsForPurchase WhatToBuy()
+        public static IngredientsForPurchase WhatToBuy(Player player)
         {
             Console.WriteLine("What product would you like to buy? 'lemon' ('l'), 'ice' ('i'), or 'sugar' ('s'). You may also 'close' ('c') to close the shop.");
             string ingredientChoice = Console.ReadLine();
@@ -35,23 +33,28 @@ namespace LemonadeStandProject
             {
                 case "close":
                 case "c":
-                    Console.WriteLine("Skipping the shop");
+                    Console.WriteLine("Skipping the shop\n");
+                    UserInterface.DisplayInventory(player);
                     return ingredient;
                 case "lemon":
                 case "l":
                     Console.WriteLine("purchasing lemons");
+                    UserInterface.DisplayInventory(player);
                     return ingredient = new Lemon();
                 case "ice":
                 case "i":
                     Console.WriteLine("purchasing ice cubes");
+                    UserInterface.DisplayInventory(player);
                     return ingredient = new IceCubes();
                 case "sugar":
                 case "s":
                     Console.WriteLine("purchasing sugar");
+                    UserInterface.DisplayInventory(player);
                     return ingredient = new Sugar();
                 default:
                     Console.WriteLine("please make a valid selection - 'lemon' ('l'), 'ice' ('i'), 'sugar' ('s'), or 'close' ('c').");
-                    return WhatToBuy();
+                    UserInterface.DisplayInventory(player);
+                    return WhatToBuy(player);
             }
         }
         public void VerifyPurchase(Player player)
@@ -61,7 +64,7 @@ namespace LemonadeStandProject
             if (player.CanBuy(totalCost))
             {
                 player.inventory.IncreaseInventory(quantityOfIngredient, ingredient);
-                player.PurchaseIngredients(totalCost, player);
+                player.PurchaseIngredients(totalCost);
             }
             else
             {
@@ -78,7 +81,7 @@ namespace LemonadeStandProject
             }
             else if (continueShopping == "n" || continueShopping == "no")
             {
-                Console.WriteLine("The shop has closed for the day!");
+                Console.WriteLine("The shop is now closed for the day!");
                 return true;
             }
             else
