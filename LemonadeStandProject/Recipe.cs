@@ -60,7 +60,7 @@ namespace LemonadeStandProject
             else if (makeChanges == "no" || makeChanges == "n")
             {
                 Console.WriteLine("You will begin the day with the following mixture:");
-                DisplayCurrentRecipe();
+                UserInterface.DisplayCurrentRecipe(this);
                 return false;
             }
             else

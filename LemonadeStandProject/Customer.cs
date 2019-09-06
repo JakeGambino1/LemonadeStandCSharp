@@ -46,7 +46,7 @@ namespace LemonadeStandProject
             {
                 return true;
             }
-            Console.WriteLine("Customer doesn't want shit in this weather.");
+            Console.WriteLine("Customer don't want shit in this weather.");
             return false;
         }
         public bool LemonadePurchaseDecision(Player player, Weather weather)

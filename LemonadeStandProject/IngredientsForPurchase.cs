@@ -15,6 +15,7 @@ namespace LemonadeStandProject
         
         public IngredientsForPurchase()
         {
+
         }
 
         public int BuyXUnits(IngredientsForPurchase ingredientChoice)

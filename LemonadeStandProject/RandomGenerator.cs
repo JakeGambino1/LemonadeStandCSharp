@@ -33,7 +33,6 @@ namespace LemonadeStandProject
         public static double PriceGenerator()
         {
             decimalNumber = Convert.ToDouble(Convert.ToDecimal(integerGenerator.Next(20, 100)) / 100);
-            // decimalNumber = integerGenerator.NextDouble();
             return decimalNumber;  
         }
     }

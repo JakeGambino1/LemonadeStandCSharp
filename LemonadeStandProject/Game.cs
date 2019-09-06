@@ -32,15 +32,17 @@ namespace LemonadeStandProject
         
         public void GameDuration()
         {
-            Console.WriteLine("How many days would you like to play? Enter a number between 1-30");
-            gameLength = Convert.ToInt32(Console.ReadLine());
+            gameLength = UserInterface.GetUserNumberInput("How many days would you like to play? Enter a number between 1-30");
+            //Console.WriteLine("How many days would you like to play? Enter a number between 1-30");
+            //gameLength = Convert.ToInt32(Console.ReadLine());
             InstantiateWeather(gameLength);
         }
         public void InstantiateWeather(int numberOfDays)
         {
-            for (int i = 0; i < numberOfDays; i++)
+            Repetitive.MakeWeatherList(numberOfDays, weatherList);
+            foreach (Weather weatherList in weatherList)
             {
-                weatherList.Add(new Weather(i, RandomGenerator.BoolGenerator(), RandomGenerator.IntegerGenerator()));
+                Console.WriteLine(weatherList.temperature);
             }
         }
         public void GameplayLoop()
@@ -73,31 +75,19 @@ namespace LemonadeStandProject
 
             if (weather.First().temperature <= 50)
             {
-                for (int i = 0; i < 15; i++)
-                {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
-                }
+                Repetitive.MakeCustomerList(15, customers);
             }
             else if (weather.First().temperature > 50 && weather.First().temperature <= 80)
             {
-                for (int i = 0; i < 25; i++)
-                {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
-                }
+                Repetitive.MakeCustomerList(25, customers);
             }
             else if (weather.First().temperature > 80 && weather.First().temperature <= 100)
             {
-                for (int i = 0; i < 50; i++)
-                {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
-                }
+                Repetitive.MakeCustomerList(50, customers);
             }
             else if (weather.First().temperature > 100)
             {
-                for (int i = 0; i < 100; i++)
-                {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
-                }
+                Repetitive.MakeCustomerList(100, customers);
             }
             for (int i = customers.Count - 1; i >= 0; i--)
             {
@@ -113,13 +103,6 @@ namespace LemonadeStandProject
         {
             player.DailyInventoryAdjustment(player);
             UserInterface.DisplayForecast(weatherList);
-        }
-        public void RepeatList(int howManyTimes, List<float> multiplyList)
-        {
-            for (int i = 0; i < howManyTimes; i++)
-            {
-                multiplyList.Add(new float());
-            }
         }
     }
 }

@@ -29,7 +29,7 @@ namespace LemonadeStandProject
         }
         public static void DisplayForecast(List<Weather> weatherList)
         {
-            Console.WriteLine("The forecast for tomorrow is " + weatherList[1].temperature + " degrees Fahrenheit.");
+            Console.WriteLine("The forecast for tomorrow is " + weatherList[Game.dayCount].temperature + " degrees Fahrenheit.");
         }
         public static void DisplayProfit(Player player)
         {
@@ -42,6 +42,12 @@ namespace LemonadeStandProject
         public static void DisplayDayCount()
         {
             Console.WriteLine("Welcome to Day " + Game.dayCount);
+        }
+        public static int GetUserNumberInput(string questionToAsk)
+        {
+            Console.WriteLine(questionToAsk);
+            return Convert.ToInt32(Console.ReadLine());
+
         }
         public static void DisplayCurrentRecipe(Recipe recipe)
         {
