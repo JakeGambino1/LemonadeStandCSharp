@@ -34,7 +34,7 @@ namespace LemonadeStandProject
         }
         public bool IsTemperatureRight(Weather weather)
         {
-            if (temperaturePreference >= weather.temperature - 7 && temperaturePreference <= weather.temperature + 7)
+            if (temperaturePreference >= weather.temperature - 15 && temperaturePreference <= weather.temperature + 15)
             { 
                 return true;
             }

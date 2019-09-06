@@ -23,7 +23,7 @@ namespace LemonadeStandProject
         // member methods
         public int SetTemperature()
         {
-            return RandomGenerator.TemperatureGenerator();
+            return RandomGenerator.IntegerGenerator();
         }
         public bool IsRaining()
         {

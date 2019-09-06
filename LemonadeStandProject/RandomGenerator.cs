@@ -8,13 +8,14 @@ namespace LemonadeStandProject
 {
     public static class RandomGenerator
     {
-        public static Random temperatureGenerator = new Random();
+        public static Random integerGenerator = new Random();
         public static Random boolGenerator = new Random();
         public static Random priceGenerator = new Random();
+        public static double decimalNumber;
 
-        public static int TemperatureGenerator()
+        public static int IntegerGenerator()
         {
-            return temperatureGenerator.Next(40, 111);
+            return integerGenerator.Next(40, 111);
         }
         public static bool BoolGenerator()
         {
@@ -31,7 +32,9 @@ namespace LemonadeStandProject
         }
         public static double PriceGenerator()
         {
-            return 0.25;
+            decimalNumber = Convert.ToDouble(Convert.ToDecimal(integerGenerator.Next(20, 100)) / 100);
+            // decimalNumber = integerGenerator.NextDouble();
+            return decimalNumber;  
         }
     }
 }

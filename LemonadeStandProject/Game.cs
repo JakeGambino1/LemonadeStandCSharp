@@ -47,7 +47,7 @@ namespace LemonadeStandProject
         {
             for (int i = 0; i < numberOfDays; i++)
             {
-                weatherList.Add(new Weather(i, RandomGenerator.BoolGenerator(), RandomGenerator.TemperatureGenerator()));
+                weatherList.Add(new Weather(i, RandomGenerator.BoolGenerator(), RandomGenerator.IntegerGenerator()));
             }
         }
         public void GameplayLoop()
@@ -84,28 +84,28 @@ namespace LemonadeStandProject
             {
                 for (int i = 0; i < 15; i++)
                 {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.TemperatureGenerator()));
+                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
                 }
             }
             else if (weather.First().temperature > 50 && weather.First().temperature <= 80)
             {
                 for (int i = 0; i < 25; i++)
                 {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.TemperatureGenerator()));
+                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
                 }
             }
             else if (weather.First().temperature > 80 && weather.First().temperature <= 100)
             {
                 for (int i = 0; i < 50; i++)
                 {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.TemperatureGenerator()));
+                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
                 }
             }
             else if (weather.First().temperature > 100)
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.TemperatureGenerator()));
+                    customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
                 }
             }
 

@@ -21,16 +21,12 @@ namespace LemonadeStandProject
             numberOfLemons = 5;
             amountOfIceCubes = 5;
             amountOfSugar = 5;
-            price = 0.25;
+            price = .50;
         }
         // member methods
-        public void CupsInPitcher()
-        {
-
-        }
         public void DisplayCurrentRecipe()
         {
-            Console.WriteLine("Your current lemonade mixture is " + numberOfLemons + " lemons, " + amountOfIceCubes + " ice cubes, and " + amountOfSugar + " cups of sugar.");
+            Console.WriteLine("Your current lemonade mixture is " + numberOfLemons + " lemons, " + amountOfIceCubes + " ice cubes, and " + amountOfSugar + " cups of sugar. The recommended/starting sale price is $" + price + ".");
         }
 
         public bool ChangeRecipe()
@@ -39,7 +35,7 @@ namespace LemonadeStandProject
             string makeChanges = Console.ReadLine().ToLower();
             if (makeChanges == "yes" || makeChanges == "y")
             {
-                Console.WriteLine("Which ingredient would you like to adjust? lemon (l), ice cubes (i), or sugar cups (s)");
+                Console.WriteLine("Would you like to adjust the recipe? 'lemon' ('l'), 'ice' ('i'), or 'sugar' ('s')? or the 'price' ('p')?");
                 string ingredientChange = Console.ReadLine().ToLower();
                 switch (ingredientChange)
                 {
@@ -57,6 +53,11 @@ namespace LemonadeStandProject
                     case "s":
                         Console.WriteLine("How much sugar would you like in the recipe?");
                         amountOfSugar = Convert.ToInt32(Console.ReadLine());
+                        return true;
+                    case "price":
+                    case "p":
+                        Console.WriteLine("What would you like the price to be?");
+                        price = Convert.ToInt32(Console.ReadLine());
                         return true;
                     default:
                         Console.WriteLine("please make a valid selection - lemon (l), ice (i), or sugar (s)");
