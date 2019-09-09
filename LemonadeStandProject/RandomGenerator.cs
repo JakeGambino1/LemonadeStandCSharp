@@ -19,12 +19,12 @@ namespace LemonadeStandProject
         }
         public static bool BoolGenerator()
         {
-            int coinFlip = boolGenerator.Next(1, 3);
-            if (coinFlip == 1)
+            int coinFlip = boolGenerator.Next(1, 7);
+            if (coinFlip <= 6)
             {
                 return true;
             }
-            else if (coinFlip == 2)
+            else if (coinFlip > 6)
             {
                 return false;
             }

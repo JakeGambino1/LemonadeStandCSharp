@@ -23,12 +23,13 @@ namespace LemonadeStandProject
         public void BeginGame()
         {
             UI.DisplayRules(player);
-            DurationCreation();
+            UI.ShowInformation($"Welcome to Day {dayCount}.");
+            InstantiateDay();
+            UI.InitializeInterface(player, day, dayCount);
             GameplayLoop();
-            UI.InitializeInterface(player);
             Console.ReadLine();
         }
-        public void DurationCreation()
+        public void InstantiateDay()
         {
             gameLength = UI.GetUserNumberInput("How many days would you like to play? Enter a number between 1-30");
             day = Repetitive.InstantiateDaysForGameDuration(gameLength, day);
@@ -46,10 +47,12 @@ namespace LemonadeStandProject
                 {
                     RecipeLoop(player);
                 }
+                UI.ShowInformation($"Welcome to Day {dayCount}.");
                 DaySalesLoop();
                 SummaryLoop();
                 dayCount++;
-                UI.ShowInformation($"Welcome to Day {dayCount}.");
+                UI.ShowInformation($"Your total profit so far is ${player.totalDailyProfits}.");
+                UI.GameSummary(player, dayCount, gameLength);
             }
         }
         public void RecipeLoop(Player player)
@@ -60,17 +63,19 @@ namespace LemonadeStandProject
         public void DaySalesLoop()
         {
             player.MakeLemonadePitcher(player.recipe, player.inventory);
+
             for (int i = 0; i < day[dayCount].customers.Count; i++)
             {
                 day[dayCount].customers[i].BuyLemonade(player, day[dayCount]);
             }
+
             UI.ShowInformation($"You have {player.cupsOfLemonade} cups of lemonade remaining.");
             shop.stopShopping = false;
         }
         public void SummaryLoop()
         {
             player.DailyInventoryAdjustment(player);
-            UI.DisplayForecast();
+            UI.DisplayForecast(day[dayCount]);
         }
     }
 }

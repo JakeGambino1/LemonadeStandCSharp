@@ -73,7 +73,7 @@ namespace LemonadeStandProject
         }
         public bool PurchaseMoreIngredients(Player player)
         {
-            UI.ShowInformation("would you like to purchase more products? 'yes' ('y') or 'no' ('n')");
+            UI.ShowInformation($"would you like to purchase more products? 'yes' ('y') or 'no' ('n')");
             string continueShopping = Console.ReadLine();
             if (continueShopping == "y" || continueShopping == "yes")
             {
@@ -81,12 +81,12 @@ namespace LemonadeStandProject
             }
             else if (continueShopping == "n" || continueShopping == "no")
             {
-                UI.ShowInformation("The shop is now closed for the day!");
+                UI.ShowInformation($"The shop is now closed for the day!");
                 return true;
             }
             else
             {
-                UI.ShowInformation("Please make a proper choice -- 'yes' ('y') or 'no' ('n')");
+                UI.ShowInformation($"Please make a proper choice -- 'yes' ('y') or 'no' ('n')");
                 return PurchaseMoreIngredients(player);
             }
         }

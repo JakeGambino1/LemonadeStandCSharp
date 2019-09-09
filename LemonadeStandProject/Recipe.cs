@@ -19,7 +19,7 @@ namespace LemonadeStandProject
             numberOfLemons = 5;
             amountOfIceCubes = 5;
             amountOfSugar = 5;
-            price = .50;
+            price = .25;
         }
 
         public bool ChangeRecipe()
@@ -50,7 +50,7 @@ namespace LemonadeStandProject
                     case "price":
                     case "p":
                         UI.ShowInformation("What would you like the price to be?");
-                        price = Convert.ToInt32(Console.ReadLine());
+                        price = Convert.ToDouble(Console.ReadLine());
                         return true;
                     default:
                         UI.ShowInformation("please make a valid selection - lemon (l), ice (i), or sugar (s)");

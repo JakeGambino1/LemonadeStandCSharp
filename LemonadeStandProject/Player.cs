@@ -39,18 +39,19 @@ namespace LemonadeStandProject
             inventory.lemons -= recipe.numberOfLemons;
             inventory.ice -= recipe.amountOfIceCubes;
             inventory.sugar -= recipe.amountOfSugar;
-            Console.WriteLine("You made a new pitcher of lemonade. Your remaining inventory is:\n" + inventory.lemons + " lemons, " + inventory.ice + " ice, and " + inventory.sugar + " sugar. Hopefully you can make it through day!");
+            UI.ShowInformation("You made a new pitcher of lemonade. Your remaining inventory is:\n" + inventory.lemons + " lemons, " + inventory.ice + " ice, and " + inventory.sugar + " sugar. Hopefully you can make it through day!");
             pitcherOfLemonade += 1;
             cupsOfLemonade += 6;
             }
             else
             {
-                Console.WriteLine("You don't have enough inventory to make a pitcher of lemonade. Visit the shop or adjust your recipe!");
+                UI.ShowInformation("You don't have enough inventory to make a pitcher of lemonade. Visit the shop or adjust your recipe!");
             }
         }
+        // Single Responsibility #2 - The only purpose of this method is to determine whether the player will visit the shop or not.
         public bool VisitShop()
         {
-            Console.WriteLine("Would you like to visit the shop again? 'yes' ('y') or 'no' ('n')");
+            UI.ShowInformation("Would you like to visit the shop again? 'yes' ('y') or 'no' ('n')");
             string userInput = Console.ReadLine();
             if (userInput == "yes" || userInput == "y")
             {
@@ -62,7 +63,7 @@ namespace LemonadeStandProject
             }
             else
             {
-                Console.WriteLine("Invalid option. Please type 'yes' ('y') or 'no' ('n')");
+                UI.ShowInformation("Invalid option. Please type 'yes' ('y') or 'no' ('n')");
                 return VisitShop();
             }
         }
@@ -90,7 +91,7 @@ namespace LemonadeStandProject
             dailyProfit = 0;
             totalCostOfGoodsSold += dailyCostOfGoodsSold;
             dailyCostOfGoodsSold = 0;
-            Console.WriteLine("You now have $" + money + " available.");
+            UI.ShowInformation("You now have $" + money + " available.");
             cupsOfLemonade = 0;
         }
     }

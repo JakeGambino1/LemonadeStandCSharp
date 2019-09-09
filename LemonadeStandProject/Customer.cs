@@ -12,10 +12,11 @@ namespace LemonadeStandProject
         public int temperaturePreference;
         public bool precipitationPreference;
 
-        public Customer(double maxPrice, int temperaturePreference)
+        public Customer()
         {
-            this.maxPrice = maxPrice;
-            this.temperaturePreference = temperaturePreference;
+            maxPrice = RandomGenerator.PriceGenerator();
+            temperaturePreference = RandomGenerator.IntegerGenerator();
+            precipitationPreference = RandomGenerator.BoolGenerator();
         }
 
         public bool IsLemonadeInBudget(Player player)
@@ -26,7 +27,7 @@ namespace LemonadeStandProject
             }
             else
             {
-                UI.ShowInformation("Customer can't afford the lemonade");
+                UI.ShowInformation($"Customer can't afford the lemonade. Their max price was {this.maxPrice}");
                 return false;
             }
         }
@@ -39,7 +40,7 @@ namespace LemonadeStandProject
             UI.ShowInformation("Customer is not in the mood for lemonade in this weather.\n");
             return false;
         } 
-        public bool IsPrecipitationRight(Weather weather)
+        public bool IsPrecipitationRight()
         {
             if (precipitationPreference)
             {
@@ -50,7 +51,7 @@ namespace LemonadeStandProject
         }
         public bool LemonadePurchaseDecision(Player player, Weather weather)
         { 
-            if (IsLemonadeInBudget(player) && IsTemperatureRight(weather) && IsPrecipitationRight(weather))
+            if (IsLemonadeInBudget(player) && IsTemperatureRight(weather) && IsPrecipitationRight())
             {
                 return true;
             }
@@ -67,12 +68,12 @@ namespace LemonadeStandProject
             }
             else if (LemonadePurchaseDecision(player, day.weather) && player.cupsOfLemonade > 0) { 
                 player.dailyProfit += player.recipe.price;
-                UI.ShowInformation("A customer has purchased your lemonade for $" + player.recipe.price + ".");
+                UI.ShowInformation($"A customer has purchased your lemonade for ${player.recipe.price}.");
                 player.cupsOfLemonade -= 1;
             }
             else if (LemonadePurchaseDecision(player, day.weather) && player.cupsOfLemonade <=0)
             {
-                UI.ShowInformation("Customer wanted to buy product, but you ran out.");
+                UI.ShowInformation($"Customer wanted to buy product, but you ran out.");
             }
 
         }
