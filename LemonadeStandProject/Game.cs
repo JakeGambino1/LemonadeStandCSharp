@@ -8,7 +8,7 @@ namespace LemonadeStandProject
     public class Game
     {
         public Player player = new Player();
-        public SupplyShop gameShop = new SupplyShop();
+        public SupplyShop shop = new SupplyShop();
         public int gameLength;
         public int dayCount;
         public List<Day> day = new List<Day>();
@@ -22,41 +22,40 @@ namespace LemonadeStandProject
         // Single Responsibility #1 - BeginGame Method. This methods only responsibility is to begin the game. It displays rules, gets the game duration and interface, and then initializes the game loop. It's only job is to start the game.
         public void BeginGame()
         {
-            UserInterface.DisplayRules(player);
+            UI.DisplayRules(player);
             DurationCreation();
             GameplayLoop();
-            UserInterface.InitializeInterface(player);
+            UI.InitializeInterface(player);
             Console.ReadLine();
         }
         public void DurationCreation()
         {
-            gameLength = UserInterface.GetUserNumberInput("How many days would you like to play? Enter a number between 1-30");
+            gameLength = UI.GetUserNumberInput("How many days would you like to play? Enter a number between 1-30");
             day = Repetitive.InstantiateDaysForGameDuration(gameLength, day);
         }
         public void GameplayLoop()
         {
             for (int i = 0; i < gameLength; i++)
             {
-                UserInterface.DisplayInventory(player);
-
-                if (gameShop.stopShopping == false)
+                UI.DisplayInventory(player);
+                if (shop.stopShopping == false)
                 {
-                    gameShop.ShopLoop(player);
+                    shop.ShopLoop(player);
                 }
-                if (player.RecipeAdjustment())
+                if (player.AdjustRecipe())
                 {
                     RecipeLoop(player);
                 }
                 DaySalesLoop();
                 SummaryLoop();
                 dayCount++;
-                UserInterface.DisplayDayCount(dayCount);
+                UI.ShowInformation($"Welcome to Day {dayCount}.");
             }
         }
         public void RecipeLoop(Player player)
         {
             player.recipe.ChangeRecipe();
-            UserInterface.DisplayCurrentRecipe(player.recipe);
+            UI.ShowInformation($"Your current lemonade mixture is {player.recipe.numberOfLemons} lemons, { player.recipe.amountOfIceCubes } ice cubes, and { player.recipe.amountOfSugar } cups of sugar. The recommended/starting sale price is ${player.recipe.price}.");
         }
         public void DaySalesLoop()
         {
@@ -65,13 +64,13 @@ namespace LemonadeStandProject
             {
                 day[dayCount].customers[i].BuyLemonade(player, day[dayCount]);
             }
-            Console.WriteLine("You have " + player.cupsOfLemonade + " cups of lemonade remaining.");
-            gameShop.stopShopping = false;
+            UI.ShowInformation($"You have {player.cupsOfLemonade} cups of lemonade remaining.");
+            shop.stopShopping = false;
         }
         public void SummaryLoop()
         {
             player.DailyInventoryAdjustment(player);
-            UserInterface.DisplayForecast();
+            UI.DisplayForecast();
         }
     }
 }

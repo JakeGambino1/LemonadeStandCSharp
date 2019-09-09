@@ -23,37 +23,37 @@ namespace LemonadeStandProject
                 WhatToBuy(player);
                 VerifyPurchase(player);
             }
-            Console.WriteLine("Time to get the day started!");
+            UI.ShowInformation("Time to get the day started!");
         }
         public static IngredientsForPurchase WhatToBuy(Player player)
         {
-            Console.WriteLine("What product would you like to buy? 'lemon' ('l'), 'ice' ('i'), or 'sugar' ('s'). You may also 'close' ('c') to close the shop.");
+            UI.ShowInformation("What product would you like to buy? 'lemon' ('l'), 'ice' ('i'), or 'sugar' ('s'). You may also 'close' ('c') to close the shop.");
             string ingredientChoice = Console.ReadLine();
             switch (ingredientChoice)
             {
                 case "close":
                 case "c":
-                    Console.WriteLine("Skipping the shop\n");
-                    UserInterface.DisplayInventory(player);
+                    UI.ShowInformation("Skipping the shop\n");
+                    UI.DisplayInventory(player);
                     return ingredient;
                 case "lemon":
                 case "l":
-                    Console.WriteLine("purchasing lemons");
-                    UserInterface.DisplayInventory(player);
+                    UI.ShowInformation("purchasing lemons");
+                    UI.DisplayInventory(player);
                     return ingredient = new Lemon();
                 case "ice":
                 case "i":
-                    Console.WriteLine("purchasing ice cubes");
-                    UserInterface.DisplayInventory(player);
+                    UI.ShowInformation("purchasing ice cubes");
+                    UI.DisplayInventory(player);
                     return ingredient = new IceCubes();
                 case "sugar":
                 case "s":
-                    Console.WriteLine("purchasing sugar");
-                    UserInterface.DisplayInventory(player);
+                    UI.ShowInformation("purchasing sugar");
+                    UI.DisplayInventory(player);
                     return ingredient = new Sugar();
                 default:
-                    Console.WriteLine("please make a valid selection - 'lemon' ('l'), 'ice' ('i'), 'sugar' ('s'), or 'close' ('c').");
-                    UserInterface.DisplayInventory(player);
+                    UI.ShowInformation("please make a valid selection - 'lemon' ('l'), 'ice' ('i'), 'sugar' ('s'), or 'close' ('c').");
+                    UI.DisplayInventory(player);
                     return WhatToBuy(player);
             }
         }
@@ -68,12 +68,12 @@ namespace LemonadeStandProject
             }
             else
             {
-                Console.WriteLine("You don't have enough money for that! You only have $" + player.money + " available");
+                UI.ShowInformation($"You don't have enough money for that! You only have ${player.money} available.");
             }
         }
         public bool PurchaseMoreIngredients(Player player)
         {
-            Console.WriteLine("would you like to purchase more products? 'yes' ('y') or 'no' ('n')");
+            UI.ShowInformation("would you like to purchase more products? 'yes' ('y') or 'no' ('n')");
             string continueShopping = Console.ReadLine();
             if (continueShopping == "y" || continueShopping == "yes")
             {
@@ -81,12 +81,12 @@ namespace LemonadeStandProject
             }
             else if (continueShopping == "n" || continueShopping == "no")
             {
-                Console.WriteLine("The shop is now closed for the day!");
+                UI.ShowInformation("The shop is now closed for the day!");
                 return true;
             }
             else
             {
-                Console.WriteLine("Please make a proper choice -- 'yes' ('y') or 'no' ('n')");
+                UI.ShowInformation("Please make a proper choice -- 'yes' ('y') or 'no' ('n')");
                 return PurchaseMoreIngredients(player);
             }
         }

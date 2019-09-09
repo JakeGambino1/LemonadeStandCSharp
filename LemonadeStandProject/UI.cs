@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public static class UserInterface
+    public static class UI
     {
         public static void InitializeInterface(Player player)
         {
@@ -39,19 +39,17 @@ namespace LemonadeStandProject
         {
             Console.WriteLine("You are an aspiring Lemonade Stand Tycoon. The Jeff Bezos of Lemonade Sales. But you need to work your way up.\n\n Let's start with the basics:\n\nYou start with $" + player.money + ". You need to purchase ice, sugar, and lemons. Afterwards, create a recipe for your lemonade. Colonel Sanders had a special recipe for his chicken. Get that magic number for your lemonade.\n\nThings that affect sales:\n\nCustomers have purchase preferences including temperature, precipitation, and their maximum budget for lemonade.\n\n");
         }
-        public static void DisplayDayCount(int dayCount)
-        {
-            Console.WriteLine("Welcome to Day " + dayCount);
-        }
+        
         public static int GetUserNumberInput(string questionToAsk)
         {
             Console.WriteLine(questionToAsk);
             return Convert.ToInt32(Console.ReadLine());
-
         }
-        public static void DisplayCurrentRecipe(Recipe recipe)
+        
+        public static void ShowInformation(string str)
         {
-            Console.WriteLine("Your current lemonade mixture is " + recipe.numberOfLemons + " lemons, " + recipe.amountOfIceCubes + " ice cubes, and " + recipe.amountOfSugar + " cups of sugar. The recommended/starting sale price is $" + recipe.price + ".");
+            Console.WriteLine(str);
         }
+
     }
 }

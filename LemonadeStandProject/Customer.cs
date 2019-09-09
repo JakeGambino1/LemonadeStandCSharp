@@ -26,7 +26,7 @@ namespace LemonadeStandProject
             }
             else
             {
-                Console.WriteLine("Customer can't afford the lemonade");
+                UI.ShowInformation("Customer can't afford the lemonade");
                 return false;
             }
         }
@@ -36,17 +36,16 @@ namespace LemonadeStandProject
             { 
                 return true;
             }
-            Console.WriteLine("Customer is not in the mood for lemonade in this weather.\n");
+            UI.ShowInformation("Customer is not in the mood for lemonade in this weather.\n");
             return false;
         } 
         public bool IsPrecipitationRight(Weather weather)
         {
-            precipitationPreference = true;
             if (precipitationPreference)
             {
                 return true;
             }
-            Console.WriteLine("Customer don't want shit in this weather.");
+            UI.ShowInformation("Customer don't want shit in this weather.");
             return false;
         }
         public bool LemonadePurchaseDecision(Player player, Weather weather)
@@ -68,12 +67,12 @@ namespace LemonadeStandProject
             }
             else if (LemonadePurchaseDecision(player, day.weather) && player.cupsOfLemonade > 0) { 
                 player.dailyProfit += player.recipe.price;
-                Console.WriteLine("A customer has purchased your lemonade for $" + player.recipe.price + ".");
+                UI.ShowInformation("A customer has purchased your lemonade for $" + player.recipe.price + ".");
                 player.cupsOfLemonade -= 1;
             }
             else if (LemonadePurchaseDecision(player, day.weather) && player.cupsOfLemonade <=0)
             {
-                Console.WriteLine("Customer wanted to buy product, but you ran out.");
+                UI.ShowInformation("Customer wanted to buy product, but you ran out.");
             }
 
         }

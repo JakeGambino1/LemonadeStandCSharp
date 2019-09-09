@@ -15,15 +15,15 @@ namespace LemonadeStandProject
 
         public int BuyXUnits(IngredientsForPurchase ingredientChoice)
         {
-            Console.WriteLine("How many would you like to buy?");
+            UI.ShowInformation("How many would you like to buy?");
             ingredientAmount = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(ingredientAmount + " " + ingredientChoice.name + " purchased.");
+            UI.ShowInformation($"{ingredientAmount} {ingredientChoice.name} purchased.");
             return ingredientAmount;
         }
         public double CalculateTotalCost(IngredientsForPurchase ingredientChoice) // Player player
         {
             totalPurchasePrice = ingredientAmount * ingredientChoice.price;
-            Console.WriteLine("The total cost of this purchase is $" + totalPurchasePrice);
+            UI.ShowInformation("The total cost of this purchase is ${totalPurchasePrice}.");
             return totalPurchasePrice;
         }
     }

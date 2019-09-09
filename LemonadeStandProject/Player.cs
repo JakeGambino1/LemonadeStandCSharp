@@ -27,9 +27,9 @@ namespace LemonadeStandProject
             money = 20;
         }
 
-        public bool RecipeAdjustment()
+        public bool AdjustRecipe()
         {
-            UserInterface.DisplayCurrentRecipe(recipe);
+            UI.ShowInformation($"Your current lemonade mixture is {recipe.numberOfLemons} lemons, { recipe.amountOfIceCubes } ice cubes, and { recipe.amountOfSugar } cups of sugar. The recommended/starting sale price is ${recipe.price}.");
             return recipe.ChangeRecipe();
         }
         public void MakeLemonadePitcher(Recipe recipe, PlayerInventory inventory)
@@ -84,7 +84,7 @@ namespace LemonadeStandProject
         }
         public void DailyInventoryAdjustment(Player player)
         {
-            UserInterface.DisplayProfit(player);
+            UI.DisplayProfit(player);
             money += dailyProfit;
             totalDailyProfits += dailyProfit;
             dailyProfit = 0;

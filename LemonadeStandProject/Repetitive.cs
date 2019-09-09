@@ -20,7 +20,6 @@ namespace LemonadeStandProject
         {
             for (int i = 0; i < howManyTimes; i++)
             {
-                //customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
                 customers.Add(new Customer(RandomGenerator.PriceGenerator(), RandomGenerator.IntegerGenerator()));
             }
             return customers;
