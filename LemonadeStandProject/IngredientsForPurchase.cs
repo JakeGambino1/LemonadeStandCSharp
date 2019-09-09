@@ -12,11 +12,6 @@ namespace LemonadeStandProject
         public string name;
         public int ingredientAmount;
         public double totalPurchasePrice;
-        
-        public IngredientsForPurchase()
-        {
-
-        }
 
         public int BuyXUnits(IngredientsForPurchase ingredientChoice)
         {

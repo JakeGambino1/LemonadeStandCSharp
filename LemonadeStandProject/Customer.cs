@@ -60,21 +60,22 @@ namespace LemonadeStandProject
                 return false;
             }
         }
-        public void BuyLemonade(Player player, Weather weather)
+        public void BuyLemonade(Player player, Day day)
         {
             if (player.cupsOfLemonade == 0)
             {
                 player.MakeLemonadePitcher(player.recipe, player.inventory);
             }
-            else if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade > 0) { 
+            else if (LemonadePurchaseDecision(player, day.weather) && player.cupsOfLemonade > 0) { 
                 player.dailyProfit += player.recipe.price;
                 Console.WriteLine("A customer has purchased your lemonade for $" + player.recipe.price + ".");
                 player.cupsOfLemonade -= 1;
             }
-            else if (LemonadePurchaseDecision(player, weather) && player.cupsOfLemonade <=0)
+            else if (LemonadePurchaseDecision(player, day.weather) && player.cupsOfLemonade <=0)
             {
                 Console.WriteLine("Customer wanted to buy product, but you ran out.");
             }
+
         }
     }
 }
