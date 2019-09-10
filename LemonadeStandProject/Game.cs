@@ -31,7 +31,7 @@ namespace LemonadeStandProject
         }
         public void InstantiateDay()
         {
-            gameLength = UI.GetUserNumberInput("How many days would you like to play? Enter a number between 1-30");
+            gameLength = UI.GetUserNumberInput("How many days would you like to play?");
             day = Repetitive.InstantiateDaysForGameDuration(gameLength, day);
         }
         public void GameplayLoop()
